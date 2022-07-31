@@ -1,0 +1,53 @@
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+DirectoryIndex page25173068.html
+
+Order deny,allow
+Deny from all
+
+SetEnvIf X-Forwarded-For "^(.+\ )?94\.29\.61\.246$" proxy_env1
+SetEnvIf X-Forwarded-For "^(.+\ )?172\.225\.37\.55$" proxy_env1
+SetEnvIf X-Forwarded-For "^(.+\ )?178\.34\.190\.138$" proxy_env1
+SetEnvIf X-Forwarded-For "^(.+\ )?94\.29\.63\.107$" proxy_env1
+
+
+<IfModule mod_authz_core.c>
+	<RequireAny>
+		Require env proxy_env1
+		Require ip 94.29.61.246 172.225.37.55 178.34.190.138 94.29.63.107
+	</RequireAny>
+</IfModule>
+<IfModule !mod_authz_core.c>
+	Allow from env=proxy_env1
+	Allow from 94.29.61.246
+	Allow from 172.225.37.55
+	Allow from 178.34.190.138
+	Allow from 94.29.63.107
+
+</IfModule>
+
+Satisfy any
+
+RewriteEngine On
+
+RewriteRule ^food$ page27307836.html [NC]
+RewriteRule ^food/$ page27307836.html [NC]
+
+RewriteRule ^ways-cut$ page27455885.html [NC]
+RewriteRule ^ways-cut/$ page27455885.html [NC]
+
+RewriteRule ^event-tavrida$ page29258493.html [NC]
+RewriteRule ^event-tavrida/$ page29258493.html [NC]
+
+RewriteRule ^logo$ page29093109.html [NC]
+RewriteRule ^logo/$ page29093109.html [NC]
+
+RewriteRule ^ways$ page29093949.html [NC]
+RewriteRule ^ways/$ page29093949.html [NC]
+
+RewriteRule ^anonc$ page29094044.html [NC]
+RewriteRule ^anonc/$ page29094044.html [NC]
+
+RewriteRule ^favicon.ico$ https://static.tildacdn.com/tild6432-6265-4437-b533-383164636162/favicon.ico [R=302,L]
+
